@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'styles-variables';
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import 'styles-reset';
+
+@import '~@angular/material/_theming.scss';
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@include mat-core();
+
+
+
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+}
+
+
+
+// Clases para los componentes dentro del router-outlet de Menu
+.menu-router-outlet-panel-left{
+  padding: 3% 7% 3% 7%;
+  height: 100%;
+  width: 100%;
+}
+
+.menu-router-outlet-panel-right{
+  padding: 3% 4% 3% 5%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+}
+// FIN Clases para los componentes dentro del router-outlet de Menu
+
+// .app-custom-theme {
+//   $my-app-primary: mat-palette($mat-purple, 500);
+//   $my-app-accent: mat-palette($mat-purple, 700);
+//   $my-app-warn: mat-palette($mat-purple, 200);
+//   $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+//   @include angular-material-theme($my-app-theme);
+// }

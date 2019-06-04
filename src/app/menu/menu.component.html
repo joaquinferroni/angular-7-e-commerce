@@ -1,0 +1,47 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" color='accent' [attr.role]="'dialog' " [mode]="'over'"
+    [opened]='false'>
+    <!-- [opened]="!(isHandset$ | async)"> -->
+    <mat-toolbar class="menu-header">
+      <!-- <img src="assets/images/general/default-user.png"> -->
+
+    </mat-toolbar>
+    <mat-nav-list class="menu">
+      <a *ngFor="let m of menuLateral; let i = index" [ngClass]="{'activo': i === menuIndex}"
+        (click)="drawer.toggle(); setMenuActive(i, m)">
+        <i class="material-icons" *ngIf="!m.Icono.includes('assets/icons')">{{m.Icono}}</i>
+        <div class="menu-icon-apex" *ngIf="m.Icono.includes('assets/icons') && i !== menuIndex"><img
+            src="{{m.Icono}}.png"></div>
+        <div class="menu-icon-apex" *ngIf="m.Icono.includes('assets/icons') && i === menuIndex"><img
+            src="{{m.Icono}}_active.png"></div>
+        <br />
+        <p>{{m.Nombre}}</p>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content color='primary'>
+    <mat-toolbar class="mat-toolbar-header" color='primary'>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon class="menu-toggle" aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <mat-form-field  class='search-bar' >
+          <input matInput (keyup.enter)="generalSearch()" placeholder="Buscar artículo" [(ngModel)]='searchValue'>
+          <mat-icon matSuffix class='clickable' (click)="generalSearch()">search</mat-icon>
+        </mat-form-field>
+
+      <button mat-button class="dollar-price" *ngIf="userData.dollar> 0 ">Dolar: {{userData.dollar|Price}}</button>
+      <button mat-mini-fab color="primary" [matBadge]="items_cart" matBadgePosition="after"
+        [matBadgeHidden]='items_cart === 0' (click)='goToCart()' matBadgeColor="accent">
+        <i class="material-icons">shopping_cart</i>
+      </button>
+      <button class="menu-user" mat-button [matMenuTriggerFor]="menu">
+          <i class="material-icons">perm_identity</i>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-menu #menu="matMenu">
+  <div class="menu-user-option-last" (click)="showData()">Mis Datos</div>
+  <div class="menu-user-option-last" (click)="logout()">SALIR</div>
+</mat-menu>

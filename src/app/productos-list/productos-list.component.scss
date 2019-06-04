@@ -1,0 +1,48 @@
+.row.content{
+    margin:20px;
+    height: 80%;
+}
+
+
+.mat-card-header{
+    border-bottom: groove;
+    border-width: 1px;
+    margin-bottom: 15px;
+}
+
+:host::ng-deep.mat-card-header-text{
+  margin:0px;
+}
+
+.full-width{
+    width: 100%;
+}
+
+
+.card-content{
+  margin: 10px;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+  :host::ng-deep.products>.item-content{
+    max-height: 600px;
+    max-width: 350px;
+}
+.item-container{
+  width: 280px !important;
+  margin-left: 10px;
+}
+}
+
+@media only screen and (max-width: 760px) {
+  .row.content{
+    margin:0px;
+  }
+
+  .card-content{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

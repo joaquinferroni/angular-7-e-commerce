@@ -1,0 +1,142 @@
+
+<div class="row detail-content" >
+  <mat-card class="item-content ">
+    <mat-card-header class="row" style="margin-bottom: 5px; margin-left:5px;">
+      <button mat-button (click)='backToList()'>
+        <i class="material-icons">arrow_back</i>
+        volver al listado
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class='row' style='margin:0px;'>
+        <div class="col-md">
+          <mat-form-field>
+            <input matInput [matDatepicker]="fromPicker" [max]="to.value" [value]='from.value'
+              (dateChange)="fromChange('change', $event)" placeholder="Fecha Desde">
+            <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+            <mat-datepicker #fromPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md">
+          <mat-form-field>
+            <input matInput [matDatepicker]="toPicker" [min]="from.value" [value]='to.value'
+              (dateChange)="toChange('change', $event)" placeholder="Fecha Hasta">
+            <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+            <mat-datepicker #toPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md">
+            <mat-form-field class="full-width">
+              <input type="text" placeholder="Estados" aria-label="Estados" matInput [(ngModel)]="statusInput"
+                [formControl]="status" [matAutocomplete]="autostatus">
+              <mat-autocomplete #autostatus="matAutocomplete">
+                <mat-option (onSelectionChange)="statusChange($event.source.id,$event.source.selected)"
+                  *ngFor="let sc of filteredStatusOptions | async" [value]="sc.text" [id]='sc.id'>
+                  {{sc.text}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        <div class="col-md">
+          <button mat-raised-button color='primary' (click)="loadOrders()">Buscar</button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <app-spinner [showSpinner]='loading'></app-spinner>
+      <div *ngIf="orders.length=== 0 && !loading">
+        <h1>No se encuentra ninguna orden realizada</h1>
+      </div>
+      <div class="scrollable" *ngIf="orders.length> 0 || !loading">
+
+
+        <table mat-table [dataSource]="orders" multiTemplateDataRows class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Fecha Pedido </th>
+            <td mat-cell *matCellDef="let element"> {{getValidDate( element.orderDate)}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="ticket">
+            <th mat-header-cell *matHeaderCellDef> Comprobante </th>
+            <td mat-cell *matCellDef="let element"> {{element.ticket}} </td>
+          </ng-container>
+
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{element.statusName}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="seller">
+            <th mat-header-cell *matHeaderCellDef> Vendedor </th>
+            <td mat-cell *matCellDef="let element"> {{element.sellerName}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="money">
+            <th mat-header-cell *matHeaderCellDef> Moneda </th>
+            <td mat-cell *matCellDef="let element"> {{element.money}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef> Total </th>
+            <td mat-cell *matCellDef="let element"> {{element.total | Price | PriceSymbol}} </td>
+          </ng-container>
+
+
+          <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+          <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+              <div class="example-element-detail row"
+                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                <mat-list *ngIf='element.orderDetails && element.orderDetails.length > 0' class='col-md-12'>
+                  <mat-list-item *ngFor='let d of element.orderDetails'>
+                    <div class='row'>
+                      <div class='col-sm-12'>
+                        <b>{{d.productDetail}}</b>
+                      </div>
+                      <div class='col-sm-12'>
+                        <div >
+                          <b>Cantidad:</b> {{d.count}}
+                        </div>
+                        <div >
+                          <b>Precio:</b> {{ivaCondition === 1? d.price_A : d.price_B | Price | PriceSymbol}}
+                        </div>
+                        <div >
+                          <b>Subtotal:</b> {{d.subTotal | Price | PriceSymbol}}
+                        </div>
+                      </div>
+
+                    </div>
+                    <mat-divider></mat-divider>
+                  </mat-list-item>
+                </mat-list>
+
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+          <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+            [class.example-expanded-row]="expandedElement === element" (click)="rowClick(element)">
+          </tr>
+          <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </table>
+
+      </div>
+
+    </mat-card-content>
+    <mat-card-footer class="mat-footer">
+
+
+    </mat-card-footer>
+  </mat-card>
+</div>

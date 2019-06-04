@@ -1,0 +1,113 @@
+.detail-content{
+  margin-left:10%;
+  margin-right:10%;
+  width: 80%;
+  height: auto;
+  margin-top:20px;
+}
+.item-content{
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+.divider{
+  height: 1px;
+  background-color: black;
+}
+
+.img-cart{
+  width: 100%;
+  height: 100%;
+  min-width: 100px;
+  max-width: 200px;
+}
+
+.mat-list-item{
+  height: auto;
+  margin-top:40px;
+  padding-bottom: 20px;
+  border-bottom: groove;
+}
+
+.price-detail{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.mat-chip{
+  font-size: 14px;
+  font-weight: 600;
+
+}
+
+.btn-cart{
+  background-color: grey;
+  color: white;
+}
+
+.btn-delete{
+  background-color: orangered;
+  color: white;
+}
+
+.mat-card-footer{
+  text-align: right;
+  margin-top: 50px;
+}
+
+.mat-table{
+  width: 100% !important;
+  min-width: 750px;
+  overflow: auto;
+}
+
+.mat-footer-row{
+  background-color: beige;
+  text-align: right;
+}
+
+.mat-row{
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.mat-footer-cell{
+  font-size: 16px;
+
+}
+
+.scrollable{
+  overflow: auto;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+  border-left: 1px solid #e0e0e0;
+}
+
+.send{
+  border-radius: 5px;
+  height: 50px;
+  font-size: large;
+}
+
+.input-full {
+  /* Style for "Tu DNI" y "Contraseña" */
+  margin-top:5%;
+  width: 100%;
+  height: 24px;
+}
+
+@media only screen and (max-width: 760px) {
+  .detail-content{
+    margin-left:0px;
+    margin-right:0px;
+     width: 100%;
+    // height: auto;
+     margin-top:0px;
+  }
+}

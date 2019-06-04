@@ -1,0 +1,73 @@
+<app-spinner [showSpinner]='loading'></app-spinner>
+<div class="row detail-content" *ngIf='!loading'>
+  <mat-card class="item-content " *ngIf="emptyProduct">
+      <mat-card-header class="row" style="margin-bottom: 5px; margin-left:5px;">
+          <button mat-button (click) ='backToList()'>
+              <i class="material-icons" >arrow_back</i>
+              volver al listado
+          </button>
+        </mat-card-header>
+    <h1>El producto que esta intentando buscar no se encuentra disponible</h1>
+  </mat-card>
+  <mat-card class="item-content " *ngIf="!emptyProduct">
+    <mat-card-header class="row" style="margin-bottom: 5px; margin-left:5px;">
+      <button mat-button (click) ='backToList()'>
+          <i class="material-icons" >arrow_back</i>
+          volver al listado
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-6">
+        <ks-carousel
+          [id]="111"
+          [images]="images"
+          [carouselConfig]="{width: auto, showArrows: true, objectFit: 'scale-down', keyboardEnable: true, modalGalleryEnable: true, legacyIE11Mode: false}"
+          [previewConfig]="{visible: true, number: 5, width: 'auto', maxHeight: '100px'}">
+          <div class="projected"></div>
+        </ks-carousel>
+      </div>
+      <div class="col-md-6 row  bordered">
+        <div class="col-md-12 detail">
+          <h2><b>{{product.detail}} </b></h2>
+          <p><b>Código: </b>{{product.barcode}} </p>
+          <p><b>Categoria: </b>{{product.category}}  {{product.subCategory ? ' > '+product.subCategory : ''}} </p>
+          <p><b>Marca: </b>{{product.brand}} - <b>Familia: </b>{{product.family}} </p>
+          <p> </p>
+          <mat-chip-list>
+            <mat-chip color="primary" class='price-detail' selected>
+              {{showFinalPrice ? product.finalPrice : product.price |Price | PriceSymbol}}
+              <span >{{!showFinalPrice? product.tipoAlicuota : ''}}</span>
+
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="col-md-12 row">
+          <div class="col-md-12" style=' text-align: center'>
+            <button mat-mini-fab (click)="addItem(1)" class="btn-cart"><mat-icon aria-label="Adicionar una unidad">add</mat-icon></button>
+              <span style="margin-left:15px; margin-right: 15px;">Agregar <b>{{itemsToAdd}}</b> producto/s</span>
+            <button mat-mini-fab (click)="addItem(-1)"[disabled]= 'itemsToAdd ===1' class="btn-cart"><mat-icon aria-label="Adicionar una unidad">remove</mat-icon></button>
+          </div>
+          <div class="col-md-12" style='text-align: center'>
+            <button mat-raised-button class='add-to-cart' [disabled]='disableCart' (click)="addToCart()">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="divider">
+    </mat-card-content>
+    <mat-card-footer class="mat-footer">
+      <div class='more-details' *ngIf='product.observations'>
+        <h2><u>Detalles</u></h2>
+        <p>{{product.observations}}</p>
+      </div>
+      <h2><u>Productos similares</u></h2>
+      <div class="row">
+        <div class="col" *ngFor=' let p of products'>
+          <app-producto-item [product]="p" class="related-products" (click)='goToDetail(p.id)'></app-producto-item>
+        </div>
+      </div>
+
+    </mat-card-footer>
+  </mat-card>
+</div>

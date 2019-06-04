@@ -1,0 +1,18 @@
+<h1 style="text-align: center" mat-dialog-title>{{data.user.socialReazon}}</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  <mat-list>
+    <mat-list-item> Codigo Cliente: {{data.user.code}} </mat-list-item>
+    <mat-list-item> Cuil: {{data.user.cuil}} </mat-list-item>
+    <mat-list-item> Lista: {{data.user.list}} </mat-list-item>
+    <mat-list-item> Credito: {{data.user.credit|Price}} </mat-list-item>
+    <mat-list-item> Vendedor: {{data.user.seller}} </mat-list-item>
+    <mat-list-item> Email: {{data.user.sellerEmail}} </mat-list-item>
+    <mat-list-item> Tipo Pago: {{data.user.paymentTypeDescription}} </mat-list-item>
+    <mat-list-item> Cond. Venta: {{data.user.paymentConditionDescription}} </mat-list-item>
+  </mat-list>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+</div>

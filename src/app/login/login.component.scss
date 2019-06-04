@@ -1,0 +1,131 @@
+:host() {
+  .general {
+    height: 100%;
+  }
+
+  .leftColumn {
+    padding-left: 5em;
+  }
+
+  .leftColumn .img-title {
+    height: 30%;
+    margin-top: 25px;
+  }
+
+  .leftColumn .subTitle {
+    /* Style for "¡Buen día!" */
+    width: 273px;
+    height: 30px;
+    color: #525252;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    line-height: 35px;
+  }
+
+  .leftColumn .subTitleDay {
+    /* Style for "Son las 12" */
+    margin-top: 5%;
+    width: 273px;
+    height: 35px;
+    color: #585858;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    line-height: 35px;
+  }
+
+  .rightColumn {
+    background-color: #84d600;
+  }
+
+  .login-form {
+    margin-top: 5%;
+    width: 90%;
+  }
+
+  .input-full {
+    /* Style for "Tu DNI" y "Contraseña" */
+    margin-top:5%;
+    width: 100%;
+    height: 24px;
+    color: #9b9b9b !important;
+    font-size: 18px;
+    letter-spacing: -0.43px;
+    line-height: 24px;
+  }
+
+   .custom-button {
+  //   /* Style for "Rectangle" */
+     margin-top:10%;
+    width: 195px;
+    height: 62px;
+    box-shadow: 0 5px 8px -2px rgba(0, 0, 0, 0.16), 0 2px 2px -2px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    /* Style for "Text" */
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    line-height: 30px;
+   }
+
+
+  .div-footer {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    /* Style for "Olvidé mis" y "CREAR MI C" */
+    color: #444343;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.47px;
+    line-height: 44px;
+    text-transform: uppercase;
+  }
+
+  .div-footer-sm {
+    margin-top: 20%;
+    width: 90%;
+    /* Style for "Olvidé mis" y "CREAR MI C" */
+    color: #444343;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.47px;
+    line-height: 44px;
+    text-transform: uppercase;
+  }
+
+  .div-footer-option {
+    border-top: 2px solid #CCCCCC;
+    width: 100%;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+
+  .copyright {
+    margin-top: 2%;
+    margin-right: 2%;
+    cursor: pointer;
+    background: rgba(black, 0.4);
+    padding: 10px;
+  }
+
+  .copyright a {
+    /* Style for "copyright" */
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    line-height: 44px;
+  }
+
+  .spinner-container {
+    width: 100%;
+    padding: 50px;
+  }
+
+  .spinner {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,145 @@
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+
+}
+
+/* .sidenav .mat-toolbar {
+  background: inherit;
+} */
+
+/* .mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  color: #767676 !important;
+} */
+
+.menu-header {
+  min-height: 120px;
+  padding-bottom: 10px;
+  padding-top: 40px;
+  display: inline-table;
+  font-size: 16px;
+}
+
+.menu-header img {
+  max-width: 80px;
+  margin:0 auto;
+  margin-top: -10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-header p:first{
+  text-align: center
+}
+
+.menu-header p{
+  margin-bottom: 5px;
+}
+
+/* .mat-toolbar-header {
+  height: 100px;
+  background-color:#FAFAFA !important;
+} */
+/*
+.mat-toolbar .menu-toggle {
+  color: #767676 !important;
+} */
+
+.mat-toolbar .menu-title {
+  margin-left:30%;
+  max-width: 80px;
+}
+
+.mat-toolbar .menu-title img {
+  margin: 0 auto;
+  width: 80px;
+}
+
+.menu {
+  text-align: center;
+}
+
+.menu a {
+  display: block;
+  padding-bottom: 24px;
+  width: 100%;
+  text-decoration: none;
+  font-family: "Circular Std" !important;
+  font-weight: 500;
+  letter-spacing: 1.13px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.menu a i {
+  font-size: 70px;
+}
+
+
+.activo {
+  color: #673ab7 !important;
+}
+
+.align-right {
+  flex: 1 0 auto;
+}
+
+
+
+.menu-user {
+  padding-right: 15px;
+  font-size: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-user img {
+  max-height: 28px;
+  max-width: 28px;
+  border-radius: 50%;
+}
+
+.menu-user-option {
+  border-bottom: 1px solid #CCCCCC;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.menu-user-option-last {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.menu-icons {
+  color: #767676;
+}
+
+.search-bar{
+  width: 100%;
+  margin-left:35px;
+  font-size: 18px;
+  padding-top:10px;
+}
+
+.clickable{
+  cursor:pointer;
+}
+@media only screen and (max-width: 500px) {
+  .search-bar{
+    margin-left:0px;
+    padding: 0px;
+
+  }
+  .dollar-price{
+    display: none;
+  }
+}

@@ -1,0 +1,21 @@
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$link-hover-decoration: none;    // remove underline from button links
+
+$link-color: #607d8b;            // set link color based on the used material theme
+$link-hover-color: currentColor;
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+  background-color: #84d600 !important;
+}
+
+::ng-deep .app-custom-theme .mat-focused .mat-form-field-required-marker {
+  color: red !important;
+}

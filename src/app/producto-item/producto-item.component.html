@@ -1,0 +1,25 @@
+<mat-card class="item-content" >
+    <div  class='image-container'>
+      <img mat-card-image [src]="'data:image/jpg;base64,'+product.imageB64" onerror="this.src='assets/images/general/default-product.png'">
+
+      <mat-chip color="primary" class="price-detail" selected >
+         {{showFinalPrice ? product.finalPrice : product.price |Price | PriceSymbol}}
+      </mat-chip>
+
+    </div>
+    <mat-card-content>
+        <mat-chip-list>
+        </mat-chip-list>
+      <span style='margin-left:3px;margin-top:1px;'> {{product.tipoAlicuota}}</span>
+      <br>
+      <span style='margin-left:3px;margin-top:1px;'>Codigo: {{product.code}}</span>
+
+      <h3><b>{{product.detail}} </b></h3>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button  class='add-to-cart'  (click)='addToCart();$event.stopPropagation()'>
+          <mat-icon class="menu-toggle" aria-label="Side nav toggle icon" >shopping_cart</mat-icon>
+          Añadir al carrito
+        </button>
+      </mat-card-actions>
+  </mat-card>

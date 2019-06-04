@@ -1,0 +1,73 @@
+<app-spinner [showSpinner]='loading'></app-spinner>
+
+<div class="row content" *ngIf='!loading '>
+  <mat-card class="col-md-3 row card-content">
+    <div class="col-md-12">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Codigo" [(ngModel)]='productFilter.Code'>
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">
+      <mat-form-field class="full-width">
+        <input type="text" placeholder="Categoria" aria-label="Categoria" matInput [(ngModel)]="categoryInput"
+          [formControl]="category" [matAutocomplete]="autocat">
+        <mat-autocomplete #autocat="matAutocomplete">
+          <mat-option (onSelectionChange)="categoryChange($event.source.id,$event.source.selected)"
+            *ngFor="let c of filteredCategoriesOptions | async" [value]="c.text" [id]='c.id'>
+            {{c.text}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+    <div class="col-md-12">
+      <mat-form-field class="full-width">
+        <input type="text" placeholder="Sub categoria" aria-label="Subcategoria" matInput [(ngModel)]="subcategoryInput"
+          [formControl]="subCategory" [matAutocomplete]="autosub">
+        <mat-autocomplete #autosub="matAutocomplete">
+          <mat-option (onSelectionChange)="subcategoryChange($event.source.id,$event.source.selected)"
+            *ngFor="let sc of filteredSubCategoriesOptions | async" [value]="sc.text" [id]='sc.id'>
+            {{sc.text}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">
+      <mat-form-field class="full-width">
+        <input type="text" placeholder="Marca" aria-label="Marca" matInput [(ngModel)]="brandInput"
+          [formControl]="brand" [matAutocomplete]="autobrand">
+        <mat-autocomplete #autobrand="matAutocomplete">
+          <mat-option (onSelectionChange)="brandChange($event.source.id,$event.source.selected)"
+            *ngFor="let sc of filteredBrandsOptions | async" [value]="sc.text" [id]='sc.id'>
+            {{sc.text}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class='col-md-12'>
+      <button mat-raised-button color="primary" (click)='search()'>
+        <mat-icon class="menu-toggle" aria-label="Side nav toggle icon">search</mat-icon>
+        <span>Filtrar</span>
+      </button>
+    </div>
+  </mat-card>
+  <div class="row content" *ngIf='!loading_list && productResponse.total === 0'>
+    <h1>No se encontraron elementos</h1>
+  </div>
+  <mat-card class="col-md-8 list-content card-content" *ngIf="productResponse.total > 0">
+
+    <mat-card-content>
+      <app-spinner [showSpinner]='loading_list'></app-spinner>
+      <div class="row" *ngIf="!loading_list">
+        <div class="col" class="item-container" *ngFor=' let p of productResponse.products'>
+          <app-producto-item [product]="p" class='products' (click)='goToDetail(p.id)'></app-producto-item>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-paginator [length]="productResponse.total" [pageSize]="productFilter.PageSize"
+        [pageIndex]="productFilter.Page-1" (page)='pageChange($event)' [pageSizeOptions]="[16, 32, 64]">
+      </mat-paginator>
+    </mat-card-footer>
+  </mat-card>
+</div>

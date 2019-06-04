@@ -1,0 +1,47 @@
+:host{
+  cursor: pointer;
+}
+.item-content:hover{
+  border: 2px;
+  border-style: outset;
+}
+.item-content{
+    margin-top:5px;
+    margin-bottom:5px;
+    min-height: 400px;
+    border-radius: 15px;
+    min-width: 200px;
+}
+
+.price-detail{
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.add-to-cart{
+  background-color:green;
+  color:white;
+  border-radius: 5px;
+  font-size: large;
+  width: 100%;
+  z-index: 1000;
+}
+
+.image-container{
+  position: relative;
+  min-height: 250px;
+  min-width: 200px;
+  text-align: center;
+}
+
+
+
+@media only screen and (min-width: 450px) {
+  :host::ng-deep.mat-card-image{
+    height: 250px;
+    width: 200px;
+}
+}
